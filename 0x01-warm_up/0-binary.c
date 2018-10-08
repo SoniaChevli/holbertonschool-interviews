@@ -30,9 +30,9 @@ void print_array(int *array, int min, int max)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	unsigned int min = size - 1;
-	unsigned int mid;
-	unsigned int max = 0;
+	unsigned int min = 0;
+	unsigned int mid = 0;
+	unsigned int max = size - 1;;
 
 	if (array == NULL)
 		return (-1);
