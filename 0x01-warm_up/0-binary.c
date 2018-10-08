@@ -10,13 +10,12 @@
 void print_array(int *array, int min, int max)
 {
 	printf("Searching in array: ");
-	while (min < max)
+	while (min <= max)
 	{
-		if (min == max - 1)
-			printf("%d", array[min]);
-		else
-			printf("%d, ", array[min]);
+		printf("%d", array[min]);
 		min++;
+		if (min <= max)
+			printf(", ");
 	}
 	printf("\n");
 
@@ -31,34 +30,29 @@ void print_array(int *array, int min, int max)
  */
 int binary_search(int *array, size_t size, int value)
 {
-	unsigned int min;
+	unsigned int min = size - 1;
 	unsigned int mid;
-	unsigned int max;
+	unsigned int max = 0;
 
 	if (array == NULL)
 		return (-1);
 
-	mid = size / 2;
-	max = size;
-	min = 0;
-	print_array(array, min, max);
-	while (max != mid || min != max)
+
+	while (min <= max)
 	{
+		print_array(array, min, max);
+		mid = min + (max - min) / 2;
+
 		if (value == array[mid])
 			return (mid);
-		else if (min == max - 1)
-			return (-1);
-		else if (value > array[mid])
-		{
-			min = mid;
-			mid = ((max - min) / 2) + min;
-		}
+
+		else if (value < array[mid])
+			max = mid - 1;
+
 		else
-		{
-			max = mid;
-			mid = max / 2;
-		}
-		print_array(array, min, max);
+			min = mid + 1;
+
+
 	}
 	return (-1);
 
