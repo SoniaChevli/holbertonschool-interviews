@@ -32,7 +32,7 @@ int binary_search(int *array, size_t size, int value)
 {
 	unsigned int min = 0;
 	unsigned int mid = 0;
-	unsigned int max = size - 1;;
+	unsigned int max = size - 1;
 
 	if (array == NULL)
 		return (-1);
